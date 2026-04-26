@@ -1,6 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext(null);
+
+function useAuth() {
+  const context = useContext(AuthContext);
+  return context;
+}
 
 function AuthProvider({ children }) {
   // 先检查本地是否已经有用户信息 有的话直接使用
@@ -60,4 +65,4 @@ function AuthProvider({ children }) {
 }
 
 export default AuthProvider;
-export { AuthContext };
+export { AuthContext, useAuth };
